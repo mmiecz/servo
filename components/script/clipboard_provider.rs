@@ -4,7 +4,6 @@
 
 use ipc_channel::ipc::channel;
 use script_traits::{ScriptMsg, ScriptToConstellationChan};
-use std::borrow::ToOwned;
 
 pub trait ClipboardProvider {
     // blocking method to get the clipboard contents
@@ -21,26 +20,5 @@ impl ClipboardProvider for ScriptToConstellationChan {
     }
     fn set_clipboard_contents(&mut self, s: String) {
         self.send(ScriptMsg::SetClipboardContents(s)).unwrap();
-    }
-}
-
-pub struct DummyClipboardContext {
-    content: String,
-}
-
-impl DummyClipboardContext {
-    pub fn new(s: &str) -> DummyClipboardContext {
-        DummyClipboardContext {
-            content: s.to_owned(),
-        }
-    }
-}
-
-impl ClipboardProvider for DummyClipboardContext {
-    fn clipboard_contents(&mut self) -> String {
-        self.content.clone()
-    }
-    fn set_clipboard_contents(&mut self, s: String) {
-        self.content = s;
     }
 }
