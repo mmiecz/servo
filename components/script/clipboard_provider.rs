@@ -1,9 +1,7 @@
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
-
-use ipc_channel::ipc::channel;
-use script_traits::{ScriptMsg, ScriptToConstellationChan};
+use script_traits::ScriptToConstellationChan;
 
 pub trait ClipboardProvider {
     // blocking method to get the clipboard contents
@@ -14,11 +12,9 @@ pub trait ClipboardProvider {
 
 impl ClipboardProvider for ScriptToConstellationChan {
     fn clipboard_contents(&mut self) -> String {
-        let (tx, rx) = channel().unwrap();
-        self.send(ScriptMsg::GetClipboardContents(tx)).unwrap();
-        rx.recv().unwrap()
+        unimplemented!()
     }
-    fn set_clipboard_contents(&mut self, s: String) {
-        self.send(ScriptMsg::SetClipboardContents(s)).unwrap();
+    fn set_clipboard_contents(&mut self, _s: String) {
+        unimplemented!()
     }
 }
