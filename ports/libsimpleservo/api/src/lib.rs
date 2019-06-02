@@ -535,6 +535,8 @@ impl ServoGlue {
                 EmbedderMsg::MoveTo(..) |
                 EmbedderMsg::ResizeTo(..) |
                 EmbedderMsg::Keyboard(..) |
+                EmbedderMsg::SetClipboardContents(..) |
+                EmbedderMsg::GetClipboardContents(..) |
                 EmbedderMsg::SetCursor(..) |
                 EmbedderMsg::NewFavicon(..) |
                 EmbedderMsg::HeadParsed |

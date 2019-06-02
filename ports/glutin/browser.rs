@@ -344,6 +344,12 @@ where
                 EmbedderMsg::Keyboard(key_event) => {
                     self.handle_key_from_servo(browser_id, key_event);
                 },
+                EmbedderMsg::SetClipboardContents(msg) => {
+                    unimplemented!();
+                }
+                EmbedderMsg::GetClipboardContents(msg) => {
+                    unimplemented!();
+                }
                 EmbedderMsg::SetCursor(cursor) => {
                     self.window.set_cursor(cursor);
                 },
